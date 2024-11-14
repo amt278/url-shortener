@@ -36,10 +36,8 @@ To run this project locally, you will need **Go** installed on your system and a
 
 2. Initialize Go modules and install dependencies:
     ```bash
-    go mod init url-shortener
+    go mod init url_shortener
     go get firebase.google.com/go
-    go get cloud.google.com/go/firestore
-    go get google.golang.org/api/option
     ```
 
 3. Set the environment variable `GOOGLE_APPLICATION_CREDENTIALS` to point to your Firebase service account JSON file:
@@ -56,7 +54,6 @@ The project structure is organized as follows:
 - **`db/db.go`**: Contains the logic for initializing the Firebase database connection using the Firestore client.
 - **`handlers/urlhandlers.go`**: Contains the HTTP handler functions for creating shortened URLs and redirecting to the original URL.
 - **`utils/urlshortener.go`**: Contains utility functions, such as generating random shortened URLs.
-- **`db/url-shortener-2010c-firebase-adminsdk-vp3yy-6d04eac264.json`**: The Firebase service account key used for connecting to Firestore.
 
 ## Environment Variables
 
@@ -74,17 +71,17 @@ Before running the project, ensure you have set the following environment variab
 - **Request Body**:
     ```json
     {
-        "original": "https://www.example.com"
+        "url": "https://www.example.com"
     }
     ```
 - **Response**:
     ```json
     {
-        "shortened": "shortened-url"
+        "shortened URL": "shortened-url"
     }
     ```
 
-### GET `/shortened/{shortened}`
+### GET `/original/{shortened}`
 - **Description**: Redirects to the original URL associated with the shortened URL.
 - **Response**: A 302 redirect to the original URL.
 
@@ -106,8 +103,6 @@ Before running the project, ensure you have set the following environment variab
 ### Install Go dependencies:
 ```bash
 go get firebase.google.com/go
-go get cloud.google.com/go/firestore
-go get google.golang.org/api/option
 ```
 
 ## License
